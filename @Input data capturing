@@ -190,4 +190,13 @@ const checkedName = e.target.name;
 
 //then you can do with the value all you want to do with it.
 };
+
+Try this :
+
+getChckeboxValue(event) {
+    const value = event.target.value;
+}
+In render:
+
+<input onClick={this.getChckeboxValue.bind(this)} type="checkbox" value="Text" />
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
