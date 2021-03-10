@@ -56,3 +56,96 @@ export default class App extends Component {
 }
 
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Button
+How to know which button is clicked when there are multiple buttons (React)
+One way you can do is keep track of row index on the state. For example, provide id to the button, which is equal to index of the row
+
+ <Button id={index} type="button" onClick={e => this.handleEdit(e)}>
+and in your handleEdit function
+
+  handleEdit = e => {
+    e.preventDefault();
+    this.setState({
+      showbutton: true,
+      showButtonIndex: Number(e.target.id)
+    });
+  };
+This way you have a index of the clicked row in the state and you can change your logic to show your <Edit /> component as
+
+{this.state.showbutton && (this.state.showButtonIndex === index) && <Edit />}
+I am assuming, you are allowing only one row to edit at a time.
+
+Code:
+App.js
+import React, { Component } from "react";
+import { Table, Button } from "reactstrap";
+import Edit from "./Edit";
+import "./styles.css";
+
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      names: ["a", "b", "c"],
+      showbutton: false,
+      showButtonIndex: null
+    };
+    this.handleEdit = this.handleEdit.bind(this);
+  }
+
+  handleEdit = e => {
+    e.preventDefault();
+    this.setState({
+      showbutton: true,
+      showButtonIndex: Number(e.target.id)
+    });
+    console.log(this.state)
+  };
+  render() {
+    console.log(this.state.names);
+    const { showButtonIndex, showbutton } = this.state;
+    return (
+      <div>
+        <h2> Names: </h2>
+        <Table>
+          <thead>
+            <tr>
+              <th>Name</th>
+            </tr>
+          </thead>
+          {this.state.names.map((name, index) => {
+            return (
+              <tbody>
+                <tr>
+                  <td> {name} </td>
+                  <td>
+                    <Button id={index} type="button" onClick={e => this.handleEdit(e)}>
+                      Edit
+                    </Button>
+                  </td>
+                  {showbutton && (showButtonIndex === index) && <Edit />}
+                </tr>
+              </tbody>
+            );
+          })}
+        </Table>
+      </div>
+    );
+  }
+}
+
+export default App;
+
+Edit.js:
+import React from "react";
+
+const Edit = props => {
+  return (
+    <div>
+      <h5>Edit Name</h5>
+    </div>
+  );
+};
+
+export default Edit;
+
