@@ -149,3 +149,45 @@ const Edit = props => {
 
 export default Edit;
 
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Checkbox
+
+const element1 = "boy";
+const element2 = "girl";
+
+<input
+ type="checkbox"
+ name={element1}
+ value={element1}
+ onChange={this.handleChange}
+/>
+<label for="element" style={{ fontSize: 35 }}>
+{element2}
+ </label>
+
+<input
+ type="checkbox"
+ name={element2}
+ value={element2}
+ onChange={this.handleChange}
+/>
+<label for="element" style={{ fontSize: 35 }}>
+{element2}
+ </label>
+
+
+
+
+handleChange = (e) => {
+// to find out if it's checked or not; returns true or false
+const checked = e.target.checked;
+
+// to get the checked value
+const checkedValue = e.target.value;
+
+// to get the checked name
+const checkedName = e.target.name;
+
+//then you can do with the value all you want to do with it.
+};
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
