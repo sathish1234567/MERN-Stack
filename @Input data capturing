@@ -200,3 +200,12 @@ In render:
 
 <input onClick={this.getChckeboxValue.bind(this)} type="checkbox" value="Text" />
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Radio Button
+http://react.tips/radio-buttons-in-reactjs/
+handleOptionChange: function (changeEvent) {
+  this.setState({
+    selectedOption: changeEvent.target.value
+  });
+},
+
+http://react.tips/
