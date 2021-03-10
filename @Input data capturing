@@ -1,3 +1,6 @@
+Rest api consuming
+https://upmostly.com/tutorials/using-axios-with-react-api-requests
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 Input:
 to capture the input value:
 const [title, setTitle] = useState('')
